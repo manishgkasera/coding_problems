@@ -32,5 +32,12 @@ describe ArrayProblems do
       a1 = [1,2,9]
       ArrayProblems.merge_sorted(a1,a2).should eq([1,1,2,4,7,9,9])
     end
+
+    it 'should merge two non empty arrays with negative elements' do
+      a2 = [-4,1,7,9]
+      a1 = [-9,1,2]
+      ArrayProblems.merge_sorted(a1,a2).should eq([-9,-4,1,1,2,7,9])
+    end
   end
+
 end
