@@ -40,4 +40,31 @@ describe ArrayProblems do
     end
   end
 
+  describe 'find_pairs_with_given_sum' do
+    it 'should return [] for empty array' do
+      ArrayProblems.find_pairs_with_given_sum([], 4).should eq([])
+    end
+
+    it 'should return [] for single element array' do
+      ArrayProblems.find_pairs_with_given_sum([4], 4).should eq([])
+    end
+
+    it 'should return valid pairs for non empty array' do
+      a = [1,2,3,6,7,3,4,5]
+      pairs_from_algo = ArrayProblems.find_pairs_with_given_sum(a, 6)
+      (pairs_from_algo.map(&:sort) - [[1,5], [2,4], [3,3]]).should be_empty
+    end
+
+    it 'should return valid pairs for array with negative elements' do
+      a = [1,2,3,6,-1,7,3,4,5]
+      pairs_from_algo = ArrayProblems.find_pairs_with_given_sum(a, 6)
+      (pairs_from_algo.map(&:sort) - [[1,5], [2,4], [3,3], [-1,7]]).should be_empty
+    end
+
+    it 'should return valid pairs for given negative sum' do
+      a = [1,2,3,-6,0,-3]
+      pairs_from_algo = ArrayProblems.find_pairs_with_given_sum(a, -1)
+      (pairs_from_algo.map(&:sort) - [[-3,2]]).should be_empty
+    end
+  end
 end

@@ -19,5 +19,15 @@ class ArrayProblems
       a += a2[j..-1] if j < a2.length
       a
     end
+
+    #Given an array, find all the pairs of elements whose sum is k
+    def find_pairs_with_given_sum(a, sum)
+      result = []
+      hash = Hash[a.product([true])]
+      a.each do |e|
+        result << [e, sum-e] if hash[sum-e]
+      end
+      result
+    end
   end
 end
