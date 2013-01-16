@@ -25,7 +25,11 @@ class EvalExpr
       end
     end
 
-    eval stack.join
+    value = pop_from_stack(stack)
+    while(op = pop_from_stack(stack))
+      value = eval("#{pop_from_stack(stack)} #{op} #{value}")
+    end
+    value.to_i
   end
 
   def self.pop_from_stack(stack)
